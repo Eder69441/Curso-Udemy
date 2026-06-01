@@ -1,62 +1,53 @@
-// function iniciarReloj() {
-//     setInterval(reloj, 1000)
-//     fecha()
-// }
+let tiempoTerminado
+let intervaloDeTiempo
 
+function comenzarCuentaRegresiva() {
+    tiempoTerminado = setTimeout(tiempoCumplido , 30000)
+    intervaloDeTiempo = setInterval(ticTac, 1000)
 
-// function reloj() {
-//     let horaActual = new Date()
-//     let hora = String(horaActual.getHours()).padStart(2, "0")
-//     let minutos = String(horaActual.getMinutes()).padStart(2, "0")
-//     let segundos = String(horaActual.getSeconds()).padStart(2, "0")
-//     let meridiano = hora >= 12 ? "pm" : "am"
-//     hora = hora % 12
-//     hora = hora === 0 ? 12 : hora  // Para que 0 sea 12
-
-//     hora = String(hora).padStart(2, "0")
-//     let horaReloj = `${hora}:${minutos}:${segundos} ${meridiano}` 
-    
-    
-//     const Reloj = document.querySelector('h1').textContent = horaReloj
-// }
-
-// function fecha(){
-//     let fechaActual = new Date()
-
-//     let dia = fechaActual.toLocaleDateString('es-ES', {
-//         day: "2-digit",
-//         month: "2-digit",
-//         year: "numeric",
-//     })
-    
-//     let fechaTitulo = document.getElementById('fecha').textContent = dia
-    
-// }
-
-
-
-function recargar() {
-    let segundos = 30
-   let intervalo = setInterval( () => {
-    segundos--
-     let tiempoRestante = document.querySelector('h1')
-    
-  
-    if(segundos <= 0) {
-        tiempoRestante.textContent = "Tiempo agotado"
-        tiempoRestante.style.color = 'red'
-        
-    } else{
-       tiempoRestante.textContent = `Tiempo restante: ${segundos}`;
-    }
-    
-   }, 1000)
-    
-    
-  
+    document.getElementById('cuentaRegresiva').textContent = 30
 
 }
 
+function ticTac() {
+    let tiempo = document.getElementById('cuentaRegresiva').textContent
+
+    document.getElementById('cuentaRegresiva').textContent = tiempo - 1
+
+}
+
+function tiempoCumplido() {
+    clearInterval(intervaloDeTiempo)
+    document.getElementById('cuentaRegresiva').textContent = 0
+
+    document.getElementById('audioFinal').play()
+    alert('GAME OVER: Se acabó el tiempo. Intenta nuevamente')
+}
+
+function finalizado() {
+    clearTimeout(tiempoTerminado)
+    clearInterval(intervaloDeTiempo)
+
+    let fecha = new Date()
+    let respuesta1 = document.getElementById('respuesta1').value
+    let respuesta2 = document.getElementById('respuesta2').value
+    let respuesta3 = document.getElementById('respuesta3').value
+    let respuesta4 = document.getElementById('respuesta4').value
+    let respuesta5 = document.getElementById('respuesta5').value
+
+    let mensaje = fecha.toLocaleDateString('es-ES') + "\n" +
+                    "1. " + respuesta1 + "\n" +
+                    "2. " + respuesta2 + "\n" +
+                    "3. " + respuesta3 + "\n" +
+                    "4. " + respuesta4 + "\n" +
+                    "5. " + respuesta5 
+
+    alert(mensaje)
+}
+
+function volverAIntentar() {
+    location.reload()
+}
 
 
  

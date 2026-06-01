@@ -1,5 +1,30 @@
-h1{
-    font-size: 40px;
-    text-align: center;
+h2{
+    color: darkkhaki;
+}
 
+p {
+    font-weight: bold;
+    font-style: italic;
+}
+
+input {
+    width: 100px;
+    height: 30px;
+}
+
+#cuentaRegresiva {
+    border: 1px;
+    border-color: red;
+    border-style: solid;
+    color: red;
+}
+
+html {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button {
+    width: 180px;
+    height: 50px;
+    background-color: darkkhaki;
 }
